@@ -9,7 +9,7 @@ public class MilkDecorator extends CoffeDecorator {
 
     @Override
     public String getDescription() {
-        return decoratedCoffe.getDescription()+ ", leche";
+        return decoratedCoffe.getDescription() + ", Leche";
     }
 
     @Override

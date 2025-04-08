@@ -1,16 +1,13 @@
 package co.edu.uniquindio.ventacafe.ventacafe.model;
 
+import co.edu.uniquindio.ventacafe.ventacafe.*;
 import co.edu.uniquindio.ventacafe.ventacafe.service.ICoffe;
-import co.edu.uniquindio.ventacafe.ventacafe.SuggarDecorator;
-import co.edu.uniquindio.ventacafe.ventacafe.MilkDecorator;
-import co.edu.uniquindio.ventacafe.ventacafe.WhiskyDecorator;
-import co.edu.uniquindio.ventacafe.ventacafe.CinnamonDecorator;
 
 public class Fachada {
 
     public Fachada(){}
 
-    public ICoffe crearCoffeDecorado(boolean isAzucar, boolean isLeche, boolean isWhisky, boolean isCanela){
+    public ICoffe crearCoffeDecorado(boolean isAzucar, boolean isLeche, boolean isWhisky, boolean isCanela,String tipoPreparacion){
         ICoffe coffe = new SimpleCoffe();
 
         if (isAzucar) {
@@ -25,21 +22,28 @@ public class Fachada {
         if (isCanela) {
             coffe = new CinnamonDecorator(coffe);
         }
-
+        if (tipoPreparacion != null) {
+            if(tipoPreparacion.equalsIgnoreCase("moka")){
+                coffe = new MoccaDecorator(coffe);
+            }
+            if(tipoPreparacion.equalsIgnoreCase("Espresso")){
+                coffe = new EspressoDecorator(coffe);
+            }
+            if(tipoPreparacion.equalsIgnoreCase("Prensa francesa")){
+                coffe= new PrensaFrancesaDecorator(coffe);
+            }
+        }
         return coffe;
     }
 
-    public double calcularPrecio(boolean isAzucar, boolean isLeche, boolean isWhisky, boolean isCanela){
-        ICoffe coffe = crearCoffeDecorado(isAzucar, isLeche, isWhisky, isCanela);
+    public double calcularPrecio(boolean isAzucar, boolean isLeche, boolean isWhisky, boolean isCanela,String tipoPreparacion){
+        ICoffe coffe = crearCoffeDecorado(isAzucar, isLeche, isWhisky, isCanela,tipoPreparacion);
         return coffe.getCost();
     }
-    public String crearIngrediente(String tipoCafe, boolean isAzucar, boolean isLeche, boolean isWhisky, boolean isCanela) {
-        String ingrediente = "Cafe" + tipoCafe;
-        if(isAzucar) ingrediente += " + Azucar";
-        if(isLeche) ingrediente += " + Leche";
-        if(isWhisky) ingrediente += " + Whisky";
-        if(isCanela) ingrediente += " + Canela";
-
-        return ingrediente;
+    public String crearIngredientes(boolean isAzucar, boolean isLeche,
+                                    boolean isWhisky, boolean isCanela,String tipoPreparacion,String tipoCafe){
+        ICoffe coffe=crearCoffeDecorado(isAzucar, isLeche, isWhisky, isCanela,tipoPreparacion);
+        return coffe.getDescription()+" tipoCafe:"+ tipoCafe;
     }
+
 }

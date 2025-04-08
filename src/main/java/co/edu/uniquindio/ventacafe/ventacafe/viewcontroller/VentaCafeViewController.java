@@ -62,8 +62,6 @@ public class VentaCafeViewController {
 
     @FXML
     void onMetodoPreparacion(ActionEvent event) {
-        String metodo = cmbMetodoPreparacion.getValue();
-        System.out.println(metodo);
     }
 
     private String obtenerTipoCafe() {
@@ -74,16 +72,28 @@ public class VentaCafeViewController {
 
     private String ingresdientesCafe(boolean isAzucar, boolean isLeche, boolean isWhisky, boolean isCanela) {
         String tipoCafe = obtenerTipoCafe();
-        return "Ingredientes: " + fachada.crearIngrediente(tipoCafe, isAzucar, isLeche, isWhisky, isCanela);
+        String tipoPreparacion=tipoPreparacion();
+        return "Ingredientes: " + fachada.crearIngredientes(isAzucar, isLeche, isWhisky, isCanela,tipoPreparacion,tipoCafe);
     }
 
     private String calcularPrecio(boolean isAzucar, boolean isLeche, boolean isWhisky, boolean isCanela) {
-        return "Costo: " + fachada.calcularPrecio(isAzucar, isLeche, isWhisky, isCanela);
+        String tipoPreparacion=tipoPreparacion();
+        return "Costo: " + fachada.calcularPrecio(isAzucar, isLeche, isWhisky, isCanela,tipoPreparacion);
     }
 
     @FXML
     void initialize() {
-        cmbMetodoPreparacion.getItems().addAll("Moka", "Prensa francesa", "Espresso", "Aeropress");
+        metodoPreparacion();
+    }
+
+    private void metodoPreparacion() {
+        cmbMetodoPreparacion.getItems().addAll("Moka", "Prensa francesa", "Espresso");
+
+    }
+
+    private String tipoPreparacion() {
+        String tipoCafe= cmbMetodoPreparacion.getValue();
+        return tipoCafe;
     }
 }
 

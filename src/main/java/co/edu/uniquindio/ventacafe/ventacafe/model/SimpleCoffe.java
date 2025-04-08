@@ -5,7 +5,7 @@ import co.edu.uniquindio.ventacafe.ventacafe.service.ICoffe;
 public class SimpleCoffe implements ICoffe {
     @Override
     public String getDescription() {
-        return "Simple Coffee";
+        return "cafe";
     }
 
     @Override

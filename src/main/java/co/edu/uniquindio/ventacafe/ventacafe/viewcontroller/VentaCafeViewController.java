@@ -65,9 +65,9 @@ public class VentaCafeViewController {
     }
 
     private String obtenerTipoCafe() {
-        if (rbPasilla.isSelected()) { return " Pasilla"; }
-        else if (rbEspecial.isSelected()) { return " Especial"; }
-        else { return " sin especificar"; }
+        if (rbPasilla.isSelected()) return "Pasilla";
+        else if (rbEspecial.isSelected())  return "Especial";
+        return null;
     }
 
     private String ingresdientesCafe(boolean isAzucar, boolean isLeche, boolean isWhisky, boolean isCanela) {
@@ -77,8 +77,9 @@ public class VentaCafeViewController {
     }
 
     private String calcularPrecio(boolean isAzucar, boolean isLeche, boolean isWhisky, boolean isCanela) {
+        String tipoCafe = obtenerTipoCafe();
         String tipoPreparacion=tipoPreparacion();
-        return "Costo: " + fachada.calcularPrecio(isAzucar, isLeche, isWhisky, isCanela,tipoPreparacion);
+        return "Costo: " + fachada.calcularPrecio(isAzucar, isLeche, isWhisky, isCanela,tipoPreparacion,tipoCafe);
     }
 
     @FXML

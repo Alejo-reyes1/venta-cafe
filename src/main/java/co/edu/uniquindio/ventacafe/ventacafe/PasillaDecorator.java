@@ -9,7 +9,7 @@ public class PasillaDecorator extends  CoffeDecorator{
     public String getDescription() { return decoratedCoffe.getDescription() + ",Pasilla"; }
 
     @Override
-    public double getCost() { return decoratedCoffe.getCost() + 0.3; }
+    public double getCost() { return decoratedCoffe.getCost() +0.3; }
 }
 
 

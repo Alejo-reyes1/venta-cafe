@@ -52,7 +52,7 @@ public class VentaCafeViewController {
         boolean isCanela = cbCanela.isSelected();
 
         String tipoCafe = obtenerTipoCafe();
-        String precioCafe = calcularPrecio(isAzucar, isLeche,isWhisky, isCanela);
+        String precioCafe =calcularPrecio(isAzucar, isLeche,isWhisky, isCanela);
         String ingredientesCafe = ingresdientesCafe(isAzucar,isLeche,isWhisky, isCanela);
 
         lbTipoCafe.setText("Tipo de café: ");
@@ -65,9 +65,9 @@ public class VentaCafeViewController {
     }
 
     private String obtenerTipoCafe() {
-        if (rbPasilla.isSelected()) return "Pasilla";
-        else if (rbEspecial.isSelected())  return "Especial";
-        return null;
+        if (rbPasilla.isSelected()) { return "Pasilla"; }
+        else if (rbEspecial.isSelected()) { return "Especial"; }
+        else { return "sin especificar"; }
     }
 
     private String ingresdientesCafe(boolean isAzucar, boolean isLeche, boolean isWhisky, boolean isCanela) {

@@ -9,5 +9,5 @@ public class WhiskyDecorator extends CoffeDecorator {
     public String getDescription() { return decoratedCoffe.getDescription() + "Whisky"; }
 
     @Override
-    public double getCost() { return decoratedCoffe.getCost() + 2;}
+    public double getCost() { return decoratedCoffe.getCost() + 2.0;}
 }

@@ -12,6 +12,6 @@ public class SuggarDecorator extends CoffeDecorator{
 
     @Override
     public double getCost(){
-        return decoratedCoffe.getCost() + 0.2;
+        return decoratedCoffe.getCost() +0.2;
     }
 }

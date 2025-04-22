@@ -21,7 +21,7 @@ public class Fachada {
             coffe = new WhiskyDecorator(coffe);
         }
         if (isCanela) {
-            coffe = new CinnamonDecorator(coffe);
+            coffe = new CanelaDecorator(coffe);
         }
         if (tipoPreparacion != null) {
             if(tipoPreparacion.equalsIgnoreCase("moka")){
@@ -34,7 +34,7 @@ public class Fachada {
                 coffe= new PrensaFrancesaDecorator(coffe);
             }
         }
-        if (tipoCafe != null) {
+        if (tipoCafe != "sin especificar") {
             if(tipoCafe.equalsIgnoreCase("Especial")){
                 coffe = new EspecialDecorator(coffe);
             }
